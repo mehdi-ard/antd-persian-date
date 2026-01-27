@@ -47,7 +47,7 @@ You should pass dayjs object with [jalali calendar](https://github.com/farnabaz/
 
 ```jsx
 import dayjs from 'dayjs'
-import { DatePicker as DatePickerJalali, Calendar as CalendarJalali, useJalaliLocaleListener } from "antd-jalali";
+import { DatePicker as DatePickerJalali, Calendar as CalendarJalali, useJalaliLocaleListener } from "antd-persian-date";
 
 // You should call this hook in child component of <ConfigProvider>
 // You can also use component helper for this hook <JalaliLocaleListener>
