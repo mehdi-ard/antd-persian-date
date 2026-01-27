@@ -1,7 +1,7 @@
 import { ConfigProvider } from "antd";
 import dayjs from "dayjs";
 import calendar from "dayjs/plugin/calendar";
-import jalaliday from "jalaliday";
+import jalaliday from "jalali-plugin-dayjs";
 import React, { useContext } from "react";
 
 /**
@@ -14,8 +14,10 @@ export const useJalaliLocaleListener = () => {
   dayjs.extend(jalaliday);
 
   React.useEffect(() => {
+    console.log(locale);
+
     if (locale?.locale == "fa") {
-      dayjs["calendar"]?.("jalali");
+      dayjs.calendar("jalali");
     } else {
       dayjs["calendar"]?.(undefined as any);
     }

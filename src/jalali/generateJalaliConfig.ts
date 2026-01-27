@@ -1,12 +1,12 @@
 import dayjs, { Dayjs } from "dayjs";
-import jalaliday from "jalaliday";
-import { noteOnce } from "rc-util/lib/warning";
-import weekday from "dayjs/plugin/weekday";
-import localeData from "dayjs/plugin/localeData";
-import weekOfYear from "dayjs/plugin/weekOfYear";
-import weekYear from "dayjs/plugin/weekYear";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import localeData from "dayjs/plugin/localeData";
+import weekday from "dayjs/plugin/weekday";
+import weekOfYear from "dayjs/plugin/weekOfYear";
+import weekYear from "dayjs/plugin/weekYear";
+import jalaliday from "jalali-plugin-dayjs";
+import { noteOnce } from "rc-util/lib/warning";
 import { default as faLocale } from "./locale";
 
 dayjs.extend(customParseFormat);
