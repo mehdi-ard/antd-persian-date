@@ -1,11 +1,15 @@
-import React from "react";
-import { DatePicker, Space, Radio, ConfigProvider, Row, Col } from "antd";
-import type { DirectionType } from "antd/lib/config-provider";
-import fa_IR from "antd/lib/locale/fa_IR";
-import en_US from "antd/lib/locale/en_US";
-import { DatePicker as DatePickerJalali, Calendar, JalaliLocaleListener } from "./index";
-import "./index.css";
+import { Col, ConfigProvider, DatePicker, Radio, Row, Space } from "antd";
 import { RadioChangeEvent } from "antd/lib";
+import type { DirectionType } from "antd/lib/config-provider";
+import en_US from "antd/lib/locale/en_US";
+import fa_IR from "antd/lib/locale/fa_IR";
+import React from "react";
+import {
+  Calendar,
+  DatePicker as DatePickerJalali,
+  JalaliLocaleListener,
+} from "./index";
+import "./index.css";
 
 const App = () => {
   const [direction, setDirection] = React.useState<DirectionType>("rtl");
@@ -24,13 +28,18 @@ const App = () => {
     <>
       <Row justify="center">
         <Col span={18}>
-          <Space direction="vertical" size={12}>
+          <Space orientation="vertical" size={12}>
             <h2> Ant-Design Jalali Date picker </h2>
 
-            <Space direction="horizontal" size={12}>
+            <Space orientation="horizontal" size={12}>
               <div style={{ marginBottom: 16 }}>
-                <span style={{ marginRight: 16 }}>Change direction of components: </span>
-                <Radio.Group defaultValue={direction} onChange={changeDirection}>
+                <span style={{ marginRight: 16 }}>
+                  Change direction of components:{" "}
+                </span>
+                <Radio.Group
+                  defaultValue={direction}
+                  onChange={changeDirection}
+                >
                   <Radio.Button key="ltr" value="ltr">
                     LTR
                   </Radio.Button>
@@ -40,7 +49,9 @@ const App = () => {
                 </Radio.Group>
               </div>
               <div style={{ marginBottom: 16 }}>
-                <span style={{ marginRight: 16 }}>Change locale of components: </span>
+                <span style={{ marginRight: 16 }}>
+                  Change locale of components:{" "}
+                </span>
                 <Radio.Group defaultValue={locale} onChange={changeLocale}>
                   <Radio.Button key="en" value={en_US}>
                     EN
@@ -54,7 +65,7 @@ const App = () => {
 
             <ConfigProvider locale={locale} direction={direction}>
               <JalaliLocaleListener />
-              <Space direction="vertical" size={12}>
+              <Space orientation="vertical" size={12}>
                 Gregorian: <DatePicker />
                 Jalali: <DatePickerJalali direction="rtl" />
                 Jalali RangePicker: <DatePickerJalali.RangePicker />

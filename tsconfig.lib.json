@@ -20,6 +20,12 @@
     "emitDeclarationOnly": true,
     "outDir": "es"
   },
-  "include": ["./src/**/*", "types", "antd-jalali.d.ts"],
+  "include": [
+    "./src/**/*",
+    "dayjs-jalali.d.ts",
+    "antd-jalali.d.ts",
+    "types/**/*.d.ts",
+    "types"
+  ],
   "exclude": ["./src/index.js"]
 }

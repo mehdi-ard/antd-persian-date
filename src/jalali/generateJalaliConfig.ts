@@ -5,8 +5,8 @@ import localeData from "dayjs/plugin/localeData";
 import weekday from "dayjs/plugin/weekday";
 import weekOfYear from "dayjs/plugin/weekOfYear";
 import weekYear from "dayjs/plugin/weekYear";
-import jalaliday from "jalali-plugin-dayjs";
-import { noteOnce } from "rc-util/lib/warning";
+import { GenerateConfig } from "rc-picker/lib/generate";
+import calendarJalali from "../libs/jalali";
 import { default as faLocale } from "./locale";
 
 dayjs.extend(customParseFormat);
@@ -15,7 +15,7 @@ dayjs.extend(weekday);
 dayjs.extend(localeData);
 dayjs.extend(weekOfYear);
 dayjs.extend(weekYear);
-dayjs.extend(jalaliday);
+dayjs.extend(calendarJalali);
 
 dayjs.locale(faLocale, undefined, true);
 
@@ -43,22 +43,17 @@ const parseLocale = (locale: string): string => {
   return mapLocale || locale.split("_")[0];
 };
 
-const parseNoMatchNotice = () => {
-  /* istanbul ignore next */
-  noteOnce(
-    false,
-    "Not match any format. Please help to fire a issue about this.",
-  );
+const parseNoMatchNotice = (): void => {
+  console.warn("No match found for the given format");
 };
 
-export const generateJalaliConfig = {
+export const generateJalaliConfig: GenerateConfig<Dayjs> = {
   // get
   getNow: () => dayjs(),
   getFixedDate: (string: string) => dayjs(string, "YYYY-MM-DD"),
   getEndDate: (date: Dayjs) => date.endOf("month"),
-  getWeekDay: (date?: Dayjs) => {
-    const safeDate = date ?? dayjs();
-    const clone = safeDate.locale("en");
+  getWeekDay: (date: Dayjs) => {
+    const clone = date.locale("en");
     return clone.weekday() + clone.localeData().firstDayOfWeek();
   },
 
@@ -81,11 +76,13 @@ export const generateJalaliConfig = {
   setSecond: (date: Dayjs, second: number) => date.second(second),
 
   getMillisecond: (date: Dayjs) => date.millisecond(),
-  setMillisecond: (date: Dayjs, second: number) => date.millisecond(second),
+  setMillisecond: (date: Dayjs, millisecond: number) =>
+    date.millisecond(millisecond),
 
   // Compare
   isAfter: (date1: Dayjs, date2: Dayjs) => date1.isAfter(date2),
   isValidate: (date: Dayjs) => date.isValid(),
+
   locale: {
     getWeekFirstDate: (locale: string, date: Dayjs) =>
       date.locale(parseLocale(locale)).weekday(0),
@@ -127,11 +124,7 @@ export const generateJalaliConfig = {
           return null;
         }
 
-        const date = dayjs(text, {
-          format,
-          locale: localeStr,
-          jalali: true,
-        });
+        const date = dayjs(text, format).locale(localeStr);
 
         if (date.isValid()) {
           return date;

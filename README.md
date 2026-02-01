@@ -3,7 +3,7 @@
 
 # Ant-Design Jalali DatePicker
 
-A wrapper for ant-design date picker and calendar to support Jalali calendar type with [Day.js](https://github.com/iamkun/dayjs) and [jalaliday](https://github.com/sssajjad007/jalali-plugin-dayjs)
+A wrapper for ant-design date picker and calendar to support Jalali calendar type with [Day.js](https://github.com/iamkun/dayjs)
 
 ## Installation
 
@@ -43,8 +43,6 @@ ReactDOM.render(
 
 ### How to set value
 
-You should pass dayjs object with [jalali calendar](https://github.com/sssajjad007/jalali-plugin-dayjs)
-
 ```jsx
 import dayjs from 'dayjs'
 import { DatePicker as DatePickerJalali, Calendar as CalendarJalali, useJalaliLocaleListener } from "antd-persian-date";
@@ -69,5 +67,3 @@ also you can create a jalali date without changing default calendar
 const date = dayjs();
 const jalaliDate = date.calendar("jalali");
 ```
-
-You can read more information about daysjs jalali on [jalaliday repo](https://github.com/sssajjad007/jalali-plugin-dayjs).

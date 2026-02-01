@@ -22,5 +22,11 @@
     "noEmit": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    "src/dayjs-jalali.d.ts",
+    "src/antd-jalali.d.ts",
+    "types/**/*.d.ts",
+    "types"
+  ]
 }

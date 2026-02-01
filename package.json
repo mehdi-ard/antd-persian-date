@@ -1,7 +1,7 @@
 {
   "name": "antd-persian-date",
-  "version": "1.0.0",
-  "description": "A wrapper for ant-design datepicker and calendar to support Jalali calendar type with dayjs.",
+  "version": "1.0.2",
+  "description": "A wrapper for ant-design date picker and calendar to support Jalali calendar type with dayjs.",
   "keywords": [
     "ant",
     "datepicker",
@@ -34,18 +34,16 @@
     "build:lib": "rimraf lib && node ./esbuild.js && npm run ts-declaration"
   },
   "dependencies": {
-    "dayjs": "1.11.19",
-    "jalali-plugin-dayjs": "^1.1.4",
-    "rc-picker": "^4.11.3"
+    "dayjs": "^1.11.19"
   },
   "peerDependencies": {
-    "antd": "^6.1.4",
-    "dayjs": ">=1.11.9",
+    "antd": ">=5.0.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@types/react": "^19.2.9",
+    "@types/react": "^19.2.10",
+    "rc-picker": "^4.11.3",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
